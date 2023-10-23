@@ -11,7 +11,8 @@
                 <table>
                     <tr>
                         <td colspan="4">
-                            <input type="text" readonly="true">
+                            <input type="text" readonly="true" value="<?php
+                                echo isset($_GET["num"]) ? $_GET["num"] : ''; ?>">
                         </td>
                     </tr>
 
@@ -42,8 +43,7 @@
             </form>
         </td>
         <td valign="top">
-            <form><input type="submit" value="C"></form>
+            <form action="calculator_template.php"><input type="submit" value="C"></form>
         </td>
     </tr>
 </table>
-</body>
