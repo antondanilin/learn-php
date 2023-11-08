@@ -7,11 +7,39 @@
 <table>
     <tr>
         <td>
-            <form action="first_number.php">
+            <form action="the_result.php" method="get">
+
                 <table>
                     <tr>
                         <td colspan="4">
-                            <input type="text" readonly="true">
+                            <input type="text" readonly="readonly" value="<?php
+                            $first_num = $_GET["hidden_first_num"];
+                            $second_num = $_GET["hidden_second_num"];
+                            $op = $_GET["hidden_op"];
+
+                            $result = null; // Initialize the result variable
+
+                            switch ($op) {
+                                case "+":
+                                    $result = $first_num + $second_num;
+                                    break;
+                                case "-":
+                                    $result = $first_num - $second_num;
+                                    break;
+                                case "*":
+                                    $result = $first_num * $second_num;
+                                    break;
+                                case "/":
+                                    if ($second_num != "0") { // Check for division by zero
+                                        $result = $first_num / $second_num;
+                                    } else {
+                                        $result = "Division by zero is not allowed.";
+                                    }
+                                    break;
+                                default:
+                                    $result = "Invalid operation";
+                            }
+                            echo $_GET["hidden_first_num"] . ($_GET["hidden_op"] ?? '') . $_GET["hidden_second_num"] . "=" . $result; ?>" >
                         </td>
                     </tr>
 
@@ -42,8 +70,8 @@
             </form>
         </td>
         <td valign="top">
-            <form><input type="submit" value="C"></form>
+            <form action="calculator_template.php"><input type="submit" value="C"></form>
         </td>
     </tr>
-</table>
-</body>
+
+

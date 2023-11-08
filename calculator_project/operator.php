@@ -7,12 +7,16 @@
 <table>
     <tr>
         <td>
-            <form action="first_number.php">
+            <form action="second_number.php" method="get">
+                <input type="hidden" name="hidden_first_num" value="<?php
+                echo $_GET["hidden_first_num"] ?>">
+                <input type="hidden" name="hidden_op" value="<?php
+                echo  isset($_GET["op"]) ? $_GET["op"] : ''; ?>" >
                 <table>
                     <tr>
                         <td colspan="4">
-                            <input type="text" readonly="true" value="<?php
-                                echo isset($_GET["num"]) ? $_GET["num"] : ''; ?>">
+                            <input type="text" readonly="readonly" value="<?php
+                            echo $_GET["hidden_first_num"] . (isset($_GET["op"]) ? $_GET["op"] : ''); ?>" >
                         </td>
                     </tr>
 
@@ -46,4 +50,3 @@
             <form action="calculator_template.php"><input type="submit" value="C"></form>
         </td>
     </tr>
-</table>
